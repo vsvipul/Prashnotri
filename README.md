@@ -22,4 +22,4 @@ Prashnotri is a quizzing platform.
 5. Create an account and start quizzing.
    
 ## How to contribute?
-Clone the repo and feel free to send any Pull Requests that you feel to be contructive.
+Clone the repo and feel free to send any Pull Requests that you feel to be constructive.
