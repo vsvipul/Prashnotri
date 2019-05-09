@@ -101,3 +101,7 @@ ENV/
 .mypy_cache/
 
 *.sqlite3
+prashnotri/*.sqlite3
+
+prashnotri/django_school/__pycache__/
+prashnotri/classroom/__pycache__/
