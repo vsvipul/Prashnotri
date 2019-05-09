@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediBay | Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/sheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+        <% include partials/header %>
+    <!-- Default form register -->
+<form class="text-center border border-light p-5" method="post" action="/register">
+
+        <p class="h4 mb-4">Sign Up</p>
+
+        <!-- Username -->
+        <input type="username" id="defaultRegisterFormUsername" class="form-control mb-4" placeholder="Username" name="username">
+
+        <!-- Name -->
+        <input type="name" id="defaultRegisterFormname" class="form-control mb-4" placeholder="Name" name="name">
+
+        <!-- E-mail -->
+        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
+
+        <!-- Password -->
+        <input type="password" id="defaultRegisterFormPassword" class="form-control mb-4" placeholder="Password" name="password">
+
+        <!-- City -->
+        <input type="city" id="defaultRegisterFormCity" class="form-control mb-4" placeholder="City" name="city">
+
+        <!-- Phone -->
+        <input type="phone" id="defaultRegisterFormPhone" class="form-control mb-4" placeholder="Phone" name="phone">
+        <!-- <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+            At least 8 characters and 1 digit
+        </small> -->
+
+        <!-- Phone number -->
+        <!-- <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+        <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+            Optional - for two step authentication
+        </small> -->
+
+        <!-- Newsletter -->
+        <!-- <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+            <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+        </div> -->
+
+        <!-- Sign up button -->
+        <button class="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
+
+        <!-- Social register -->
+        <!-- <p>or sign up with:</p>
+
+        <a type="button" class="light-blue-text mx-2">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+            <i class="fab fa-github"></i>
+        </a> -->
+
+        <hr>
+
+        <!-- Terms of service -->
+        <p>By clicking
+            <em>Sign up</em> you agree to our
+            <a href="" target="_blank">terms of service</a>
+        </p>
+        <p>Not a member?
+            <a href="/login">Sign In</a>
+        </p>
+    </form>
+    <!-- Default form register -->
+    <% include partials/footer %>
+</body>
+</html>

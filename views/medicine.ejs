@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediBay | Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/sheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../css/medicine.css" rel="stylesheet">
+</head>
+
+<body>
+    <% include partials/header %>
+        <div class="post-container" id="profile-details">
+            <p><span class="post-thumb" id="photo"><img src="<%= medicine.image %>"></span></p>
+            <div class="post-content" id="details">
+                    <p class="post-title"><a href="/medicine/<%= medicine._id %>"><span id="name"><%= medicine.name %></span></a></p>
+            <div class="row">
+                <div class="col mb-1">
+                    <label>Name</label>
+                </div>
+                <div class="col mb-1">
+                    <p><%= medicine.username %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-1">
+                    <label>MRP</label>
+                </div>
+                <div class="col mb-1">
+                    <p><%= medicine.mrp %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-1">
+                    <label>Expiry</label>
+                </div>
+                <div class="col mb-1">
+                    <p><%= medicine.expiry %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-1">
+                    <label>Quantity</label>
+                </div>
+                <div class="col mb-1">
+                    <p><%= medicine.quantity %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-1">
+                    <label>Brand</label>
+                </div>
+                <div class="col mb-1">
+                    <p><%= medicine.brand %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-1">
+                    <label>Description</label>
+                </div>
+                <div class="col mb-1">
+                    <p><%= medicine.description %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-1">
+                    <label>Use</label>
+                </div>
+                <div class="col mb-1">
+                    <p><%= medicine.use %></p>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col mb-4">
+                    <label>Phone Number</label>
+                </div>
+                <div class="col mb-4">
+                    <p><%= contact %></p>
+                </div>
+            </div>
+        </div>
+        <footer class="page-footer font-small special-color-dark pt-4">
+                <!-- Footer Elements -->
+             <div class="container">
+
+                    <!-- Social buttons -->
+                    <ul class="list-unstyled list-inline text-center">
+                      <li class="list-inline-item">
+                        <a class="btn-floating btn-fb mx-1" href="#">
+                          <i class="fab fa-facebook-f"> </i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a class="btn-floating btn-github mx-1" href="https://github.com/vsvipul/MediBay">
+                          <i class="fab fa-github"> </i>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- Social buttons -->
+
+                  </div>
+                  <!-- Footer Elements -->
+
+                  <!-- Copyright -->
+                  <div class="footer-copyright text-center py-3">© 2019 MediBay (by HackBenchers)</a>
+                  </div>
+                  <!-- Copyright -->
+            </footer>
+            <!-- SCRIPTS -->
+            <!-- JQuery -->
+            <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+            <!-- Bootstrap tooltips -->
+            <script type="text/javascript" src="../js/popper.min.js"></script>
+            <!-- Bootstrap core JavaScript -->
+            <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+            <!-- MDB core JavaScript -->
+            <script type="text/javascript" src="../js/mdb.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediBay | Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/sheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/market.css" rel="stylesheet">
+</head>
+
+<body>
+    <% include partials/header %>
+    <div class="container">
+        <% if (locals.user) { %>
+            <div class="col mb-3">
+                <div class="profile-head">
+                    <h3><%= user.username %>
+                    <a href="/update">
+                        <button class="float-right btn btn-info my-2" type="submit">Edit Profile</button>
+                    </a>
+                </h3>
+                    <br> <br>
+                </div>
+            </div>
+            <div class="tab-pane" id="profile-details">
+                <div class="row">
+                    <div class="col mb-4">
+                        <label>Name</label>
+                    </div>
+                    <div class="col mb-4">
+                        <p><%= user.name %></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label>Email</label>
+                    </div>
+                    <div class="col mb-4">
+                        <p><%= user.email %></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label>Phone</label>
+                    </div>
+                    <div class="col mb-4">
+                        <p><%= user.phone %></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label>City</label>
+                    </div>
+                    <div class="col mb-4">
+                        <p><%= user.city %></p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p><%= user.username %>'s Medicines</p>
+                <% for(var i = 0; i< medicine.length; i++) { %>
+                    <div class="post-container">
+                    <hr>
+                    <p><span class="post-thumb" id="photo"><img src="<%= medicine[i].image %>"></span></p>
+                    <div class="post-content" id="details">
+                        <a href="/medicine/<%= medicine[i]._id %>" class ="post-title"><span id="name"><%= medicine[i].name %></span></a>
+                        <a href="/profile/<%= medicine[i]._id %>">
+                            <button class="float-right btn btn-danger my-2" type="submit">Remove Listing</button>
+                        </a>
+                        <p><span id="sp"><%= medicine[i].sp %></span>
+                            <span id="mrp"><strike><%= medicine[i].mrp %></strike></span></p>
+                        <p><span id="quantity"><%= medicine[i].quantity %></span></p>
+                        <p><span id="expiry"><%= medicine[i].expiry %></span></p>
+
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        <% } else { %>
+            <p>
+                You are not a valid user. Please <a href="/register">Sign Up</a>
+            </p>
+            <p>Have an Account?
+                <a href="/login">Sign In</a>
+            </p>
+        <% } %>
+    </div>
+    <% include partials/footer %>
+</body>
+</html>

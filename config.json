@@ -1,0 +1,8 @@
+{
+    "serverPort": 8080,
+    "using_connection_string": true,
+    "connectionString": "mongodb://vsvipul:sampledb123@cluster0-shard-00-00-g43h3.mongodb.net:27017,cluster0-shard-00-01-g43h3.mongodb.net:27017,cluster0-shard-00-02-g43h3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
+    "db_user": "vsvipul",
+    "db_pass": "sampledb123",
+    "sessionSecret": "6Ldqj4sUAAAAAASgwp8C5C3-FKioQkctLC7QiAIu"
+}
