@@ -105,3 +105,6 @@ prashnotri/*.sqlite3
 
 prashnotri/django_school/__pycache__/
 prashnotri/classroom/__pycache__/
+
+
+prashnotri/classroom/__pycache__/
