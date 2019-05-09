@@ -3,10 +3,8 @@ Prashnotri is a quizzing platform.
 
 ## Technologies Used
 
-- NodeJS
-- mongoDB
-- mongoose
-- passportJS
+- Django
+- sqlite3
 
 ### How to run
 
@@ -14,11 +12,12 @@ Prashnotri is a quizzing platform.
 2. cd into the repo.
 3. Run the following commands.
    ```
-   npm install
-   sudo npm install -g nodemon
-   nodemon
+    pip3 install -r requirements.txt
+    python3 pranshnotri/manage.py makemigrations
+    python3 pranshnotri/manage.py migrate
+    python3 pranshnotri/manage.py runserver
    ```
-4. Your website will be live at [http://localhost:8080/](http://localhost:8080/)
+4. Your website will be live at [http://localhost:8080/](http://localhost:8000/)
 5. Create an account and start quizzing.
    
 ## How to contribute?
