@@ -4,7 +4,7 @@ Prashnotri is a quizzing platform.
 ## Technologies Used
 
 - Django
-- sqlite3
+- MySQL
 
 ### How to run
 
@@ -17,7 +17,7 @@ Prashnotri is a quizzing platform.
     python3 pranshnotri/manage.py migrate
     python3 pranshnotri/manage.py runserver
    ```
-4. Your website will be live at [http://localhost:8080/](http://localhost:8000/)
+4. Your website will be live at [http://localhost:8000/](http://localhost:8000/)
 5. Create an account and start quizzing.
    
 ## How to contribute?
