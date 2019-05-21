@@ -68,21 +68,21 @@ class BaseAnswerInlineFormSet(forms.BaseInlineFormSet):
             raise ValidationError('Mark at least one answer as correct.', code='no_correct_answer')
 
 
-class TakeQuizForm(forms.ModelForm):
-    answer = forms.ModelChoiceField(
-        queryset=Answer.objects.none(),
-        widget=forms.RadioSelect(),
-        required=True,
-        empty_label=None)
+# class TakeQuizForm(forms.ModelForm):
+#     answer = forms.ModelChoiceField(
+#         queryset=Answer.objects.none(),
+#         widget=forms.RadioSelect(),
+#         required=True,
+#         empty_label=None)
 
-    class Meta:
-        model = StudentAnswer
-        fields = ('answer', )
+#     class Meta:
+#         model = StudentAnswer
+#         fields = ('answer', )
 
-    def __init__(self, *args, **kwargs):
-        question = kwargs.pop('question')
-        super().__init__(*args, **kwargs)
-        self.fields['answer'].queryset = question.answers.order_by('?')
+#     def __init__(self, *args, **kwargs):
+#         question = kwargs.pop('question')
+#         super().__init__(*args, **kwargs)
+#         self.fields['answer'].queryset = question.answers.order_by('?')
 
 class TakeReQuizForm(forms.ModelForm):
     answer = forms.ModelChoiceField(
@@ -100,4 +100,7 @@ class TakeReQuizForm(forms.ModelForm):
         attempt = kwargs.pop('attempt')
         submitted = False
         super().__init__(*args, **kwargs)
+        # print("Question We are setting: ",question)
         self.fields['answer'].queryset = question.answers.order_by('?')
+        # print("Answers: ")
+        # print(question.answers.order_by('text'))

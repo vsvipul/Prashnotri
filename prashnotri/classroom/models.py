@@ -87,6 +87,7 @@ class Attempt(models.Model):
     quiz = models.ForeignKey(Quiz,on_delete=models.CASCADE,related_name='quiz_attempts')
     score = models.FloatField()
     date = models.DateTimeField(auto_now_add=True)
+    currquestion = models.ForeignKey(Question,null=True,default=None,on_delete=models.SET_NULL)
 
 class attemptAnswer(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE,related_name='attempt_answer')

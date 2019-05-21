@@ -74,50 +74,50 @@ class TakenQuizListView(ListView):
         return queryset
 
 
-@login_required
-@student_required
-def take_quiz(request, pk):
-    quiz = get_object_or_404(Quiz, pk=pk)
-    student = request.user.student
+# @login_required
+# @student_required
+# def take_quiz(request, pk):
+#     quiz = get_object_or_404(Quiz, pk=pk)
+#     student = request.user.student
 
-    if student.quizzes.filter(pk=pk).exists():
-        return render(request, 'students/taken_quiz.html')
+#     if student.quizzes.filter(pk=pk).exists():
+#         return render(request, 'students/taken_quiz.html')
 
-    total_questions = quiz.questions.count()
-    unanswered_questions = student.get_unanswered_questions(quiz)
-    total_unanswered_questions = unanswered_questions.count()
-    progress = 100 - round(((total_unanswered_questions - 1) / total_questions) * 100)
-    # unanswered_questions = list(unanswered_questions)
-    # random.shuffle(unanswered_questions)
-    question = unanswered_questions.first()
+#     total_questions = quiz.questions.count()
+#     unanswered_questions = student.get_unanswered_questions(quiz)
+#     total_unanswered_questions = unanswered_questions.count()
+#     progress = 100 - round(((total_unanswered_questions - 1) / total_questions) * 100)
+#     # unanswered_questions = list(unanswered_questions)
+#     # random.shuffle(unanswered_questions)
+#     question = unanswered_questions.first()
 
-    if request.method == 'POST':
-        form = TakeQuizForm(question=question, data=request.POST)
-        if form.is_valid():
-            with transaction.atomic():
-                student_answer = form.save(commit=False)
-                student_answer.student = student
-                student_answer.save()
-                if student.get_unanswered_questions(quiz).exists():
-                    return redirect('students:take_quiz', pk)
-                else:
-                    correct_answers = student.quiz_answers.filter(answer__question__quiz=quiz, answer__is_correct=True).count()
-                    score = round((correct_answers / total_questions) * 100.0, 2)
-                    TakenQuiz.objects.create(student=student, quiz=quiz, score=score)
-                    if score < 50.0:
-                        messages.warning(request, 'Better luck next time! Your score for the quiz %s was %s.' % (quiz.name, score))
-                    else:
-                        messages.success(request, 'Congratulations! You completed the quiz %s with success! You scored %s points.' % (quiz.name, score))
-                    return redirect('students:quiz_list')
-    else:
-        form = TakeQuizForm(question=question)
+#     if request.method == 'POST':
+#         form = TakeQuizForm(question=question, data=request.POST)
+#         if form.is_valid():
+#             with transaction.atomic():
+#                 student_answer = form.save(commit=False)
+#                 student_answer.student = student
+#                 student_answer.save()
+#                 if student.get_unanswered_questions(quiz).exists():
+#                     return redirect('students:take_quiz', pk)
+#                 else:
+#                     correct_answers = student.quiz_answers.filter(answer__question__quiz=quiz, answer__is_correct=True).count()
+#                     score = round((correct_answers / total_questions) * 100.0, 2)
+#                     TakenQuiz.objects.create(student=student, quiz=quiz, score=score)
+#                     if score < 50.0:
+#                         messages.warning(request, 'Better luck next time! Your score for the quiz %s was %s.' % (quiz.name, score))
+#                     else:
+#                         messages.success(request, 'Congratulations! You completed the quiz %s with success! You scored %s points.' % (quiz.name, score))
+#                     return redirect('students:quiz_list')
+#     else:
+#         form = TakeQuizForm(question=question)
 
-    return render(request, 'classroom/students/take_quiz_form.html', {
-        'quiz': quiz,
-        'question': question,
-        'form': form,
-        'progress': progress
-    })
+#     return render(request, 'classroom/students/take_quiz_form.html', {
+#         'quiz': quiz,
+#         'question': question,
+#         'form': form,
+#         'progress': progress
+#     })
 
 @login_required
 @student_required
@@ -143,16 +143,28 @@ def retake_quiz(request, pk):
     unanswered_questions = student.get_attempt_unanswered_questions(attempt)
     total_unanswered_questions = unanswered_questions.count()
     progress = 100 - round(((total_unanswered_questions - 1) / total_questions) * 100)
-    question = unanswered_questions.first()
+    if(attempt.currquestion==None):
+        question = unanswered_questions.first()
+        with transaction.atomic():
+            attempt.currquestion = question 
+            attempt.save()
+    else:
+        question = attempt.currquestion
 
     if request.method == 'POST':
         form = TakeReQuizForm(question=question, data=request.POST, attempt=attempt)
         if form.is_valid():
+            print("Valid Form!")
+            print(question)
+            print(request.POST)
+            print(attempt)
             with transaction.atomic():
                 student_answer = form.save(commit=False)
                 student_answer.student = student
                 student_answer.attempt = attempt
                 student_answer.save()
+                attempt.currquestion = None
+                attempt.save()
                 if student.get_attempt_unanswered_questions(attempt).exists():
                     return redirect('students:retake_quiz', pk)
                 else:
@@ -165,7 +177,16 @@ def retake_quiz(request, pk):
                         messages.warning(request, 'Better luck next time! Your score for the quiz %s was %s.' % (quiz.name, score))
                     else:
                         messages.success(request, 'Congratulations! You completed the quiz %s with success! You scored %s points.' % (quiz.name, score))
+                    if student.quizzes.filter(pk=quiz.pk).exists():
+                        return redirect('students:quiz_list')
+                    else:
+                        TakenQuiz.objects.create(student=student, quiz=quiz, score=score)
                     return redirect('students:quiz_list')
+        else:
+            print("Invalid Form???")
+            print(question)
+            print(request.POST)
+            print(attempt)
     else:
         form = TakeReQuizForm(question=question,attempt=attempt)
 
@@ -175,3 +196,8 @@ def retake_quiz(request, pk):
         'form': form,
         'progress': progress
     })
+
+# @login_required
+# @student_required
+# def submission_quiz(request,pk,question):
+    
