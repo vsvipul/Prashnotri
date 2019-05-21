@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Welcome to Prashnotri! <span class="icon-emo-happy"></span></h2>
-  <p class="lead">
+  <h2 class="cent">Welcome to Prashnotri! <span class="icon-emo-happy"></span></h2>
+  <p class="lead cent">
     If you already have an account, go ahead and <a href="{% url 'login' %}">log in</a>. If you are new to Prashnotri, get started
     by creating a <a href="{% url 'student_signup' %}">student account</a> or a <a href="{% url 'teacher_signup' %}">teacher account</a>.
   </p>
   <hr>
-  <h3>What's this about?</h3>
-  <p>
+  <h3 class="cent">What's this about?</h3>
+  <p class="cent">
     In this application, users can sign up as a student or a teacher. Teachers can create quizzes and students can answer quizzes
     based on their interests.
   </p>
