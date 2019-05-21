@@ -57,7 +57,14 @@ class Student(models.Model):
         answered_questions = self.quiz_answers \
             .filter(answer__question__quiz=quiz) \
             .values_list('answer__question__pk', flat=True)
-        questions = quiz.questions.exclude(pk__in=answered_questions).order_by('text')
+        questions = quiz.questions.exclude(pk__in=answered_questions).order_by('?')
+        return questions
+    
+    def get_attempt_unanswered_questions(self,attempt):
+        answered_questions = self.attempt_answer \
+            .filter(attempt=attempt) \
+            .values_list('answer__question__pk',flat=True)
+        questions = attempt.quiz.questions.exclude(pk__in=answered_questions).order_by('?')
         return questions
 
     def __str__(self):
@@ -74,3 +81,15 @@ class TakenQuiz(models.Model):
 class StudentAnswer(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='quiz_answers')
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='+')
+
+class Attempt(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='quiz_attempts')
+    quiz = models.ForeignKey(Quiz,on_delete=models.CASCADE,related_name='quiz_attempts')
+    score = models.FloatField()
+    date = models.DateTimeField(auto_now_add=True)
+
+class attemptAnswer(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE,related_name='attempt_answer')
+    answer = models.ForeignKey(Answer,on_delete=models.CASCADE,related_name='a+')
+    attempt = models.ForeignKey(Attempt,on_delete=models.CASCADE)
+    submitted = models.BooleanField(default=False)
