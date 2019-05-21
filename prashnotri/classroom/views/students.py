@@ -9,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 
 from ..decorators import student_required
-from ..forms import StudentInterestsForm, StudentSignUpForm, TakeQuizForm, TakeReQuizForm
+from ..forms import StudentInterestsForm, StudentSignUpForm, TakeReQuizForm
 from ..models import Quiz, Student, TakenQuiz, User, Attempt
 import random
 
