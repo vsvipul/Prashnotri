@@ -1,0 +1,4 @@
+1. Update Front-End
+2. Setup Email Verification
+3. Add functionality to jump to any given question
+4. ...
