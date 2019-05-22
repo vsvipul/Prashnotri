@@ -104,3 +104,11 @@ class TakeReQuizForm(forms.ModelForm):
         self.fields['answer'].queryset = question.answers.order_by('?')
         # print("Answers: ")
         # print(question.answers.order_by('text'))
+
+class SubmitAttemptForm(forms.ModelForm):
+    class Meta:
+        model = attemptAnswer
+        fields = ()
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+    # pass
