@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3 class="mb-3">{{ quiz.name }}</h2>
+<h3 class="mb-3">Score: {{ score }}</h3>
+<h3 class="mb-3">Attempt number: {{attempt}}</h3> 
+{% endblock %}

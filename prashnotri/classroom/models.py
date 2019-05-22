@@ -57,8 +57,26 @@ class Student(models.Model):
         answered_questions = self.quiz_answers \
             .filter(answer__question__quiz=quiz) \
             .values_list('answer__question__pk', flat=True)
-        questions = quiz.questions.exclude(pk__in=answered_questions).order_by('text')
+        questions = quiz.questions.exclude(pk__in=answered_questions).order_by('?')
         return questions
+    
+    def get_attempt_unanswered_questions(self,attempt):
+        answered_questions = self.attempt_answer \
+            .filter(attempt=attempt) \
+            .values_list('answer__question__pk',flat=True)
+        qid = attemptQuestion.objects \
+            .filter(attempt__pk=attempt.pk) \
+            .exclude(question__pk__in=answered_questions) \
+            .values_list('question',flat=True) \
+            .order_by('order')
+        return qid
+
+    def get_question(self,attempt,order):
+        qid = attemptQuestion.objects \
+            .filter(attempt__pk=attempt.pk) \
+            .filter(order=order) \
+            .values_list('question',flat=True)
+        return qid
 
     def __str__(self):
         return self.user.username
@@ -74,3 +92,26 @@ class TakenQuiz(models.Model):
 class StudentAnswer(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='quiz_answers')
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='+')
+
+class Attempt(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='quiz_attempts')
+    quiz = models.ForeignKey(Quiz,on_delete=models.CASCADE,related_name='quiz_attempts')
+    score = models.FloatField()
+    over = models.BooleanField(default=False)
+    date = models.DateTimeField(auto_now_add=True)
+    currquestion = models.ForeignKey(Question,null=True,default=None,on_delete=models.SET_NULL)
+
+class attemptAnswer(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE,related_name='attempt_answer')
+    answer = models.ForeignKey(Answer,on_delete=models.CASCADE,related_name='a+')
+    attempt = models.ForeignKey(Attempt,on_delete=models.CASCADE)
+    question = models.ForeignKey(Question,on_delete = models.CASCADE)
+    submitted = models.BooleanField(default=False)
+
+class attemptQuestion(models.Model):
+    question = models.ForeignKey(Question,on_delete=models.CASCADE)
+    attempt = models.ForeignKey(Attempt,on_delete=models.CASCADE,related_name="attempt_q")
+    order = models.IntegerField()
+
+    class Meta:
+        unique_together = ("order","attempt")

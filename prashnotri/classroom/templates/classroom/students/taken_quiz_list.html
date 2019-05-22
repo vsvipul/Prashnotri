@@ -17,6 +17,9 @@
             <td>{{ taken_quiz.quiz.name }}</td>
             <td>{{ taken_quiz.quiz.subject.get_html_badge }}</td>
             <td>{{ taken_quiz.score }}</td>
+            <td class="text-right">
+              <a href="{% url 'students:newretake_quiz' taken_quiz.pk %}" class="btn btn-primary">Retake quiz</a>
+            </td>
           </tr>
         {% empty %}
           <tr>
