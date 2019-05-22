@@ -186,21 +186,6 @@ def retake_quiz(request, pk):
                     return redirect('students:retake_quiz', pk)
                 else:
                     return redirect('students:show_submit', pk)
-                    # correct_answers = student.attempt_answer.filter(attempt=attempt, answer__is_correct=True).count()
-                    # score = round((correct_answers / total_questions) * 100.0, 2)
-                    # # TakenQuiz.objects.create(student=student, quiz=quiz, score=score)
-                    # attempt.score = score
-                    # attempt.over = True
-                    # attempt.save()
-                    # if score < 50.0:
-                    #     messages.warning(request, 'Better luck next time! Your score for the quiz %s was %s.' % (quiz.name, score))
-                    # else:
-                    #     messages.success(request, 'Congratulations! You completed the quiz %s with success! You scored %s points.' % (quiz.name, score))
-                    # if student.quizzes.filter(pk=quiz.pk).exists():
-                    #     return redirect('students:quiz_list')
-                    # else:
-                    #     TakenQuiz.objects.create(student=student, quiz=quiz, score=score)
-                    # return redirect('students:quiz_list')
     else:
         if(is_a):
             ans = is_answered.values_list('answer',flat=True).first()
@@ -236,8 +221,13 @@ def goto_quiz(request,pk,q_pk):
         attempt.save()
         return redirect('students:retake_quiz',pk)
 
+@login_required
+@student_required
 def show_submit(request,pk):
     attempt = get_object_or_404(Attempt,pk=pk)
+    student = request.user.student
+    if attempt.over or student != attempt.student:
+        return redirect('students:taken_quiz_list')
     if request.method=='POST':
         form = SubmitAttemptForm(data = request.POST)
         print(form.is_valid())
