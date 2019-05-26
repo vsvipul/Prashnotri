@@ -3,7 +3,8 @@
 3. Add functionality to jump to any given question
 4. indexing(done)
 5. Storage engine
-6. ...
+6. Setup Email Verification
+7. ...
 Views:
     given_quiz: Get number of quizes given by a user.
     average_score: Get average score of each student in each subject.
