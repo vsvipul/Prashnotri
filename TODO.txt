@@ -4,7 +4,8 @@
 4. indexing(done)
 5. Storage engine
 6. Setup Email Verification
-7. ...
+7. Rank List 
+8. ...
 Views:
     given_quiz: Get number of quizes given by a user.
     average_score: Get average score of each student in each subject.
