@@ -13,9 +13,9 @@ Prashnotri is a quizzing platform.
 3. Run the following commands.
    ```
     pip3 install -r requirements.txt
-    python3 pranshnotri/manage.py makemigrations
-    python3 pranshnotri/manage.py migrate
-    python3 pranshnotri/manage.py runserver
+    python3 prashnotri/manage.py makemigrations
+    python3 prashnotri/manage.py migrate
+    python3 prashnotri/manage.py runserver
    ```
 4. Your website will be live at [http://localhost:8000/](http://localhost:8000/)
 5. Create an account and start quizzing.
