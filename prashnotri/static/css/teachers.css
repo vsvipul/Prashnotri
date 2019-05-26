@@ -1,3 +1,10 @@
 body {
-  background-color: #b0aac2;
+  background-image:url('../img/bg2.jpeg');
+  background-repeat:no-repeat;
+  background-size:100%;
+}
+
+.logo a {
+  color: #212529;
+  text-decoration: none;
 }

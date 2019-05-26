@@ -1,3 +1,9 @@
 body {
-  background-color: #c2d4d8;
+  background-image:url('../img/bg.jpeg');
+  background-repeat:no-repeat;
+  background-size:100%;
+}
+
+.pt-3 {
+  color: #ffffff
 }

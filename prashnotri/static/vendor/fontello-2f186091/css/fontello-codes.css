@@ -1,4 +1,6 @@
 
-.icon-emo-happy:before { content: '\e801'; } /* '' */
-.icon-graduation-cap-1:before { content: '\e803'; } /* '' */
-.icon-feather:before { content: '\e808'; } /* '' */
+.icon-user:before { content: '\e800'; } /* '' */
+.icon-users:before { content: '\e801'; } /* '' */
+.icon-pencil:before { content: '\e802'; } /* '' */
+.icon-feather:before { content: '\e803'; } /* '' */
+.icon-graduation-cap:before { content: '\f19d'; } /* '' */
