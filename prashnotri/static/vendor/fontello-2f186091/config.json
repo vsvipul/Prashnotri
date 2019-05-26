@@ -7,20 +7,32 @@
   "ascent": 850,
   "glyphs": [
     {
-      "uid": "c64623255a4a7c72436b199b05296c4f",
-      "css": "emo-happy",
+      "uid": "8b80d36d4ef43889db10bc1f0dc9a862",
+      "css": "user",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "31972e4e9d080eaa796290349ae6c1fd",
+      "css": "users",
       "code": 59393,
-      "src": "fontelico"
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d35a1d35efeb784d1dc9ac18b9b6c2b6",
+      "css": "pencil",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "20fc52f9a88bb7bda023ef209acac095",
+      "css": "graduation-cap",
+      "code": 61853,
+      "src": "fontawesome"
     },
     {
       "uid": "bcb868184ff9c35f8aef564f50c0d649",
       "css": "feather",
-      "code": 59400,
-      "src": "entypo"
-    },
-    {
-      "uid": "ef74ff62feda486fd414410e782b598a",
-      "css": "graduation-cap-1",
       "code": 59395,
       "src": "entypo"
     }

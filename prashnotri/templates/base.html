@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Prashnotri{% endblock %}</title>
     <link rel="icon" href="{% static 'img/favicon.png' %}">
-    <link href="https://fonts.googleapis.com/css?family=Clicker+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontello-2f186091/css/fontello.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
@@ -36,7 +36,7 @@
             </div>
             <div class="col-6 text-right">
               {% if user.is_authenticated %}
-                <p class="pt-3">Logged in as <strong>{{ user.username }}</strong>. <a href="{% url 'logout' %}">Log out</a>.</p>
+                <p class="pt-3">Logged in as <strong>{{ user.username }}</strong>. <a href="{% url 'logout' %}" class="btn btn-success">Log out</a></p>
               {% else %}
                 <a href="{% url 'login' %}" class="btn btn-light" role="button">Log in</a>
                 <a href="{% url 'signup' %}" class="btn btn-primary" role="button">Sign up</a>

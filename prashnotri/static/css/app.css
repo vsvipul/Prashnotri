@@ -1,5 +1,5 @@
 .logo {
-  font-family: 'Clicker Script', cursive;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 .logo a {
@@ -33,28 +33,28 @@ footer a {
 
 .btn-student {
   color: #fff;
-  background-color: #91afb6;
-  border-color: #91afb6;
+  background-color: #20bf6b;
+  border-color: #30cf7b;
 }
 
 .btn-student:hover,
 .btn-student:active {
   color: #fff;
-  background-color: #608993;
-  border-color: #608993;
+  background-color: #40cf7b;
+  border-color: #40cf7b;
 }
 
 .btn-teacher {
   color: #fff;
-  background-color: #8980a5;
-  border-color: #8980a5;
+  background-color: #2E76CF;
+  border-color: #3E86DF;
 }
 
 .btn-teacher:hover,
 .btn-teacher:active {
   color: #fff;
-  background-color: #66598B;
-  border-color: #66598B;
+  background-color: #3E86DF;
+  border-color: #3E86DF;
 }
 
 .has-danger .radio,
