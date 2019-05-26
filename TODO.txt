@@ -17,3 +17,15 @@ Triggers:
     num_attempts_ondelete: Update number of attempts on deletion of a quiz;
     update_avg_ondelete: Update average if user gets deleted;
 
+Indexing:
+    B+ Tree indexing is used in indexing.
+    Tables/Column(s):
+        Attempt/ ["Student"]
+        Attempt/ ["quiz"]
+        attemptAnswer/ ["student"]
+        attemptAnswer/ ["answer"]
+        attemptAnswer/ ["attempt,"question"]
+        attemptQuestion/ ["attempt","question"] 
+    
+    Reason: Indexes are made on these fields becuase these 
+            fields are used frequently.
