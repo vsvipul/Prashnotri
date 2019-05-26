@@ -247,7 +247,7 @@ def submit_attempt(request,pk):
     quiz = attempt.quiz
     student = request.user.student
     total_questions = quiz.questions.count()
-    att_nu = Attempt.objects.filter(quiz=quiz).count()
+
     if(student!=attempt.student or attempt.over):
         print("Attempt_OVER!")
         return redirect('students:taken_quiz_list')
@@ -268,6 +268,5 @@ def submit_attempt(request,pk):
             TakenQuiz.objects.create(student=student, quiz=quiz, score=score)
         return render(request,'classroom/students/result.html',{
             'score':score,
-            'quiz':quiz,
-            'attempt':att_nu+1
+            'quiz':quiz
         })
