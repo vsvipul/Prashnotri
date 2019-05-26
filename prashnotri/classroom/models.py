@@ -100,6 +100,12 @@ class Attempt(models.Model):
     over = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True)
     currquestion = models.ForeignKey(Question,null=True,default=None,on_delete=models.SET_NULL)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['student']),
+            models.Index(fields=['quiz']),
+        ]
 
 class attemptAnswer(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE,related_name='attempt_answer')
@@ -107,6 +113,12 @@ class attemptAnswer(models.Model):
     attempt = models.ForeignKey(Attempt,on_delete=models.CASCADE)
     question = models.ForeignKey(Question,on_delete = models.CASCADE)
     submitted = models.BooleanField(default=False)
+    class Meta:
+        indexes = [
+            models.Index(fields=['student']),
+            models.Index(fields=['answer']),
+            models.Index(fields=['attempt','question'])
+        ]
 
 class attemptQuestion(models.Model):
     question = models.ForeignKey(Question,on_delete=models.CASCADE)
@@ -115,3 +127,6 @@ class attemptQuestion(models.Model):
 
     class Meta:
         unique_together = ("order","attempt")
+        indexes = [
+            models.Index(fields=['attempt','question'])
+        ]
