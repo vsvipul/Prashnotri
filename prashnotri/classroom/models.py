@@ -26,14 +26,14 @@ class Quiz(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quizzes')
     name = models.CharField(max_length=255)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='quizzes')
-
+    averageScore = models.FloatField(default=0)
     def __str__(self):
         return self.name
 
 
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions')
-    text = models.CharField('Question', max_length=255)
+    text = models.CharField('Question', max_length=2550)
 
     def __str__(self):
         return self.text

@@ -1,6 +1,19 @@
 1. Update Front-End
 2. Setup Email Verification
 3. Add functionality to jump to any given question
-4. indexing
+4. indexing(done)
 5. Storage engine
 6. ...
+Views:
+    given_quiz: Get number of quizes given by a user.
+    average_score: Get average score of each student in each subject.
+    average_attempts: Get average number of attempts of each student.
+    get_interests: Get interests of students.
+    get_avg_score_of_a_setter: Average score of quizzes set by a user.
+
+Triggers:
+    verify_email: Verify if email entered is of correct format.
+    num_attempts: Update number of attempts of the student.
+    num_attempts_ondelete: Update number of attempts on deletion of a quiz;
+    update_avg_ondelete: Update average if user gets deleted;
+
