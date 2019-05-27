@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     'classroom',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,8 @@ MESSAGE_TAGS = {
 # Third party apps configuration
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
