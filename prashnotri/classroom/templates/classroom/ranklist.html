@@ -1,8 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Quiz Name: {{quiz}}</h3>
 <div class="card">
+        <table class="table mb-0">
+    <thead>
+        <tr>
+            <th class="align-left"><h3>Quiz Name: {{quiz}}</h3></h3></th>
+            {% if user.is_authenticated %}
+            {% if user.is_student %}
+            <th class="align-right"><a href="{% url 'students:quiz_list'%}" class="btn btn-primary">Home</a></th>
+            {% else %}
+            <th class="align-right"><a href="{% url 'teachers:quiz_change_list'%}" class="btn btn-primary">Home</a></th>
+            {% endif %}
+            {% else %}
+            <th class="align-right"><a href="{% url 'home'%}" class="btn btn-primary">Home</a></th>
+            {% endif %}
+        </tr>
+    </thead>
+    </table>
     <table class="table mb-0">
     <thead>
         <tr>
@@ -10,7 +25,7 @@
             <th>Student</th>
             <th>Score</th>
             <th>Submission Time</th>
-        <tr>
+        </tr>
     </thead>
     <tbody>
         {% for attempt in ranklist%}

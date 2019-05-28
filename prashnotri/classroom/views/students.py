@@ -271,11 +271,25 @@ def submit_attempt(request,pk):
             'quiz':quiz
         })
 
-@login_required
+#@login_required
 def get_ranklist(request,pk):
     quiz = get_object_or_404(Quiz,pk=pk)
     ranklist = TakenQuiz.objects.filter(quiz=quiz).order_by('-score')
     return render(request, 'classroom/ranklist.html',{
         'ranklist':ranklist,
         'quiz': quiz
+    })
+
+@login_required
+@student_required
+def attempts(request,pk=-1):
+    student = request.user.student
+    attemptlist = Attempt.objects.filter(student=student).filter(over=True)
+    print(pk)
+    if(pk>=0):
+        attemptlist = attemptlist.filter(quiz__pk=pk)
+    attemptlist.order_by('date')
+    return render(request,'classroom/students/attempts.html',{
+        'attemptlist':attemptlist,
+        'student':student
     })

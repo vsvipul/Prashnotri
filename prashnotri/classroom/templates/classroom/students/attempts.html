@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'classroom/students/_header.html' with active='attempt' %}
+<div class="card">
+    <table class="table mb-0">
+    <thead>
+        <tr>
+            <th class="align-left"><h4>User Name: {{student}}</h4></th>
+            <th class="align-right"><a href="{% url 'students:quiz_list'%}" class="btn btn-primary">Home</a></th>
+        </tr>
+    </thead>
+    </table>
+    <table class="table mb-0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Quiz</th>
+            <th>Score</th>
+            <th>Submission Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for attempt in attemptlist%}
+        <tr>
+        <td>{{forloop.counter }}</td>
+        <td>{{attempt.quiz}}</td>
+        <td>{{attempt.score}}</td>
+        <td>{{attempt.date}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -14,7 +14,9 @@ urlpatterns = [
         path('newre/<int:pk>/',students.newretake_quiz,name='newretake_quiz'),
         path('requiz/<int:pk>/<int:q_pk>/',students.goto_quiz, name='jump_to_q'),
         path('submit_quiz/<int:pk>/',students.show_submit, name='show_submit'),
-        path('submit/<int:pk>/',students.submit_attempt,name='submit_attempt')
+        path('submit/<int:pk>/',students.submit_attempt,name='submit_attempt'),
+        path('attempts/',students.attempts,name='all_attempt'),
+        path('attempts/<int:pk>/',students.attempts,name='attempt')
     ], 'classroom'), namespace='students')),
 
     path('teachers/', include(([
