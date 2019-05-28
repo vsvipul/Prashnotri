@@ -18,8 +18,14 @@
             <td>{{ taken_quiz.quiz.subject.get_html_badge }}</td>
             <td>{{ taken_quiz.score }}</td>
             <td class="text-right">
-              <a href="{% url 'students:newretake_quiz' taken_quiz.pk %}" class="btn btn-primary">Retake quiz</a>
+              <a href="{% url 'students:newretake_quiz' taken_quiz.quiz.pk %}" class="btn btn-primary">Retake quiz</a>
             </td>
+            <td class="text-right">
+              <a href="{% url 'ranklist' taken_quiz.quiz.pk %}" class="btn btn-primary">Ranklist</a>
+            </td>
+            {% comment %} <td class="text-right">
+              <a href="{% url 'my_attempt' taken_quiz.quiz.pk %}" class="btn btn-primary">My Attempts</a>
+            </td> {% endcomment %}
           </tr>
         {% empty %}
           <tr>

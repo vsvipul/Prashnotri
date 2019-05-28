@@ -270,3 +270,12 @@ def submit_attempt(request,pk):
             'score':score,
             'quiz':quiz
         })
+
+@login_required
+def get_ranklist(request,pk):
+    quiz = get_object_or_404(Quiz,pk=pk)
+    ranklist = TakenQuiz.objects.filter(quiz=quiz).order_by('-score')
+    return render(request, 'classroom/ranklist.html',{
+        'ranklist':ranklist,
+        'quiz': quiz
+    })

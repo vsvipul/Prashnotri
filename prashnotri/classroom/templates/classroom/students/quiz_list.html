@@ -21,6 +21,9 @@
             <td class="text-right">
               <a href="{% url 'students:newretake_quiz' quiz.pk %}" class="btn btn-primary">Take quiz</a>
             </td>
+            <td class="text-right">
+              <a href="{% url 'ranklist' quiz.pk %}" class="btn btn-primary">Ranklist</a>
+            </td>
           </tr>
         {% empty %}
           <tr>
