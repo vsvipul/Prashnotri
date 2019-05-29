@@ -2,13 +2,16 @@
 
 {% block content %}
   {% include 'classroom/students/_header.html' with active='taken' %}
-  <div class="card">
+  <div class="card table-responsive">
     <table class="table mb-0">
       <thead>
         <tr>
           <th>Quiz</th>
           <th>Subject</th>
           <th>Score</th>
+          <th>Retake</th>
+          <th>Ranklist</th>
+          <th>My Attempts</th>
         </tr>
       </thead>
       <tbody>
@@ -17,13 +20,13 @@
             <td>{{ taken_quiz.quiz.name }}</td>
             <td>{{ taken_quiz.quiz.subject.get_html_badge }}</td>
             <td>{{ taken_quiz.score }}</td>
-            <td class="text-right">
-              <a href="{% url 'students:newretake_quiz' taken_quiz.quiz.pk %}" class="btn btn-primary">Retake quiz</a>
+            <td class="align-middle">
+              <a href="{% url 'students:newretake_quiz' taken_quiz.quiz.pk %}" class="btn btn-primary">Retake</a>
             </td>
-            <td class="text-right">
+            <td class="align-middle">
               <a href="{% url 'ranklist' taken_quiz.quiz.pk %}" class="btn btn-primary">Ranklist</a>
             </td>
-            <td class="text-right">
+            <td class="align-middle">
               <a href="{% url 'students:attempt' taken_quiz.quiz.pk %}" class="btn btn-primary">My Attempts</a>
             </td>
           </tr>

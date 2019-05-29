@@ -8,8 +8,9 @@
         <tr>
           <th>Quiz</th>
           <th>Subject</th>
-          <th>Length</th>
-          <th></th>
+          <th>Ques.</th>
+          <th>Attempt</th>
+          <th>Ranklist</th>
         </tr>
       </thead>
       <tbody>
@@ -17,11 +18,11 @@
           <tr>
             <td class="align-middle">{{ quiz.name }}</td>
             <td class="align-middle">{{ quiz.subject.get_html_badge }}</td>
-            <td class="align-middle">{{ quiz.questions_count }} questions</td>
-            <td class="text-right">
-              <a href="{% url 'students:newretake_quiz' quiz.pk %}" class="btn btn-primary">Take quiz</a>
+            <td class="align-middle">{{ quiz.questions_count }}</td>
+            <td class="align-middle">
+              <a href="{% url 'students:newretake_quiz' quiz.pk %}" class="btn btn-primary">Attempt</a>
             </td>
-            <td class="text-right">
+            <td class="align-middle">
               <a href="{% url 'ranklist' quiz.pk %}" class="btn btn-primary">Ranklist</a>
             </td>
           </tr>

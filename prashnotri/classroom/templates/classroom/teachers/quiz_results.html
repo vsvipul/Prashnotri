@@ -12,7 +12,7 @@
   </nav>
   <h2 class="mb-3">{{ quiz.name }} Results</h2>
 
-  <div class="card">
+  <div class="card table-responsive">
     <div class="card-header">
       <strong>Taken Quizzes</strong>
       <span class="badge badge-pill badge-primary float-right">Average Score: {{ quiz_score.average_score|default_if_none:0.0 }}</span>
