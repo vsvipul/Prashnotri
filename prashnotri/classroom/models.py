@@ -6,10 +6,14 @@ from django.utils.html import escape, mark_safe
 class User(AbstractUser):
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
+    email = models.EmailField(null=False,unique=True)
+    class Meta:
+        unique_together=['email']
+
 
 
 class Subject(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30,unique=True)
     color = models.CharField(max_length=7, default='#007bff')
 
     def __str__(self):
@@ -94,7 +98,7 @@ class StudentAnswer(models.Model):
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='+')
 
 class Attempt(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='quiz_attempts')
+    student = models.ForeignKey('Student', models.CASCADE, related_name='quiz_attempts',null=False)
     quiz = models.ForeignKey(Quiz,on_delete=models.CASCADE,related_name='quiz_attempts')
     score = models.FloatField()
     over = models.BooleanField(default=False)

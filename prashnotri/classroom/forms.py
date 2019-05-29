@@ -20,6 +20,9 @@ class TeacherSignUpForm(UserCreationForm):
 
 
 class StudentSignUpForm(UserCreationForm):
+    firstName = forms.CharField(required=True)
+    lastName = forms.CharField(required=False)
+    email = forms.EmailField(required=True)
     interests = forms.ModelMultipleChoiceField(
         queryset=Subject.objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -33,6 +36,9 @@ class StudentSignUpForm(UserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.is_student = True
+        user.email = self.cleaned_data.get('email')
+        user.last_name = self.cleaned_data.get('lastName')
+        user.first_name = self.cleaned_data.get('firstName')
         user.save()
         student = Student.objects.create(user=user)
         student.interests.add(*self.cleaned_data.get('interests'))
