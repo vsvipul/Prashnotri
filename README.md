@@ -19,6 +19,6 @@ Prashnotri is a quizzing platform.
    ```
 4. Your website will be live at [http://localhost:8000/](http://localhost:8000/)
 5. Create an account and start quizzing.
-   
+6. There should we some level in quizz
 ## How to contribute?
 Clone the repo and feel free to send any Pull Requests that you feel to be constructive.
